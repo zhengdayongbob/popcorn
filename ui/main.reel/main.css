@@ -1,12 +1,9 @@
-/* @override http://localhost:8082/montage-projects/main.reel/main.css */
-
 .main {
     display: -webkit-box;
     -webkit-box-align: center;
     -webkit-box-pack: center;
     height: 100%;
 	font-family: "Nunito","Lucida Grande", Lucida, Verdana, sans-serif;
-	background: -webkit-radial-gradient(center, closest-side, hsl(0,0%,30%), hsl(0,0%,15%) );
 }
 
 .facade {
@@ -56,6 +53,7 @@
 
 .MontageMade {
     position: absolute;
+    z-index: 2;
     top: 0;
     right: 25px;
     width: 50px;
@@ -73,4 +71,60 @@
 
 .MontageMade:active {
     top: 2px;
+}
+
+
+/* Small viewport -------------------------------- */
+
+@media (max-width: 1023px) {
+    
+    .main {
+        display: block;
+        height: auto;
+    }
+    
+    .facade {
+        width: 100%;
+        height: auto;
+    }
+    
+    .header {
+        position: relative;
+    }
+    
+    .logo {
+        display: block;
+        margin: 20px auto;
+    }
+
+}
+
+@media (max-width: 640px) {
+    .MontageMade {
+        position: relative;
+        display: block;
+        margin: 0 auto 20px auto;
+        right: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    
+    .filter {
+        display: block;
+    }
+    
+    .filter.montage-ButtonGroup {
+        padding: 0 60px;
+    }
+    
+    .filter .montage-Button,
+    .filter .montage-Button:first-child,
+    .filter .montage-Button:last-child {
+        display: block;
+        width: 100%;
+        margin: 6px 0;
+        border-radius: 6px;
+    }
+    
 }

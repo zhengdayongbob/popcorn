@@ -1,9 +1,16 @@
-/* @override http://localhost:8082/montage-projects/ui/details.reel/details.css */
-
 .details {
     position: relative;
     text-align: center;
     color: hsl(0,0%,60%);
+    height: 280px;
+    margin: 0 auto;
+    -webkit-transform: translate3d(0,-30px,0);
+    -webkit-transition: opacity .5s, -webkit-transform .5s;
+}
+
+.details-fade-out{
+    opacity: 0;
+    -webkit-transform: translate3d(0,-20px,0);
 }
 
 .details .title {
@@ -16,6 +23,18 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.details .list {
+    margin: 10px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.details .list li {
+    display: inline-block;
+    margin: 5px 15px;
+}
+
 
 .details .score {
     margin: 0 30px 0 2px;
@@ -79,4 +98,39 @@
 }
 
 
+/* Small viewport -------------------------------- */
+
+@media (max-width: 1023px) {
+
+    .details {
+        height: auto;
+        padding: 0 20px;
+        -webkit-transform: translate3d(0,0px,0);
+    }
+    
+    .details-fade-out{
+        -webkit-transform: translate3d(0,10px,0);
+    }
+
+    .details .title {
+        width: auto;
+    }
+    
+    .scroller {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+    
+    .action-buttons {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 20px;
+    }
+
+    .details .montage-Button.button {
+        display: inline-block;
+    }
+}
 

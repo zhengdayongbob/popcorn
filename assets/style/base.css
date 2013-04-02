@@ -49,3 +49,22 @@ body {
 .montage-app-loaded .main {
     visibility: visible;
 }
+
+.montage-app-loaded body {
+    background: hsl(0,0%,15%) -webkit-radial-gradient(center, closest-side, hsl(0,0%,30%), hsl(0,0%,15%) ) no-repeat;
+}
+
+
+@media (max-width: 1023px) {
+    
+    html {
+        height: auto;
+    }
+    
+    body {
+        overflow-y: auto;
+        height: auto;
+        min-height: 100%;
+    }
+
+}
