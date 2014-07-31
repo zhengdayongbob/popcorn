@@ -3,10 +3,12 @@
  * @requires montage/core/core
  */
 var Montage = require("montage/core/core").Montage;
+var Promise = require("montage/core/promise").Promise;
 var RangeController = require("montage/core/range-controller").RangeController;
 
 var CategoryController = require("./category-controller").CategoryController;
 var sharedTransport = require("./jsonp-transport").shared;
+var tmdbCache = require("../model/offline/tmdb").tmdb;
 
 var API_KEY = "dbf71473cf25bbd06939baef47b626eb";
 var BOX_OFFICE_FEED = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + API_KEY;
@@ -87,7 +89,7 @@ exports.TmdbService = Montage.specialize(/** @lends TmdbService# */ {
 
     loadLatestBoxOfficeMovies: {
         value: function () {
-
+            return Promise.resolve(tmdbCache.loadLatestBoxOfficeMovies);
             return sharedTransport.makeRequest(BOX_OFFICE_FEED, "tmdb")
             .then(function (response) {
                 return response.results;
@@ -97,7 +99,7 @@ exports.TmdbService = Montage.specialize(/** @lends TmdbService# */ {
 
     loadUpcomingMovies: {
         value: function () {
-
+            return Promise.resolve(tmdbCache.loadUpcomingMovies);
             return sharedTransport.makeRequest(UPCOMING_FEED, "tmdb")
             .then(function (response) {
                 return response.results;
@@ -107,7 +109,7 @@ exports.TmdbService = Montage.specialize(/** @lends TmdbService# */ {
 
     loadTopRated: {
         value: function () {
-
+            return Promise.resolve(tmdbCache.loadTopRated);
             return sharedTransport.makeRequest(TOP_RATED_FEED, "tmdb")
             .then(function (response) {
                 return response.results;
@@ -118,7 +120,7 @@ exports.TmdbService = Montage.specialize(/** @lends TmdbService# */ {
 
     loadPopular: {
         value: function () {
-
+            return Promise.resolve(tmdbCache.loadPopular);
             return sharedTransport.makeRequest(POPULAR_FEED, "tmdb")
             .then(function (response) {
                 return response.results;
@@ -128,19 +130,21 @@ exports.TmdbService = Montage.specialize(/** @lends TmdbService# */ {
 
     loadMovie: {
         value: function (movie) {
-            return sharedTransport.makeRequest(MOVIE+ movie.id + "?api_key=" + API_KEY, "tmdb")
-            .then(function (response) {
-                return response;
-            });
+            if (!movie) {
+                return Promise.resolve({});
+            }
+            return Promise.resolve(tmdbCache["movie/" + movie.id]);
+            return sharedTransport.makeRequest(MOVIE+ movie.id + "?api_key=" + API_KEY, "tmdb");
         }
     },
 
     loadReleases: {
         value: function (movie) {
-            return sharedTransport.makeRequest(MOVIE+ movie.id + "/releases?api_key=" + API_KEY, "tmdb")
-            .then(function (response) {
-                return response;
-            });
+            if (!movie) {
+                return Promise.resolve({});
+            }
+            return Promise.resolve(tmdbCache["releases/" + movie.id]);
+            return sharedTransport.makeRequest(MOVIE+ movie.id + "/releases?api_key=" + API_KEY, "tmdb");
         }
     }
 
