@@ -9,5 +9,6 @@
   },
   "devDependencies": {
     "montage-testing": "~0.4.0"
-  }
+  },
+  "bundle": ["ui/main.reel", "montage/core/event/key-manager"]
 }
