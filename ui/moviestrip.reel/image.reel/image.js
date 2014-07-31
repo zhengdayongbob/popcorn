@@ -19,17 +19,21 @@ exports.Image = AbstractImage.specialize( {
                 this._src = value;
                 this.needsDraw = true;
             }
+        },
+        get: function() {
+            return this._src;
         }
     },
 
     draw: {
         value: function () {
-            var src;
-            if (this._isLoadingImage || this._isInvalidSrc) {
-                src = this.emptyImageSrc;
-            } else {
-                src = this._getRebasedSrc();
-            }
+            var src = this._src;
+//            if (this._isLoadingImage || this._isInvalidSrc) {
+//                src = this.emptyImageSrc;
+//            } else {
+//                src = this._getRebasedSrc();
+//            }
+
             if (typeof src !== "undefined") {
                 this._element.style.backgroundImage = "url(" + src + ")";
             }
