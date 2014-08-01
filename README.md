@@ -1,5 +1,14 @@
 # Popcorn Readme
 
+## How to run on Samsung Gear2
+Download the [Tizen SDK for Wearable](http://developer.samsung.com/samsung-gear).
+Download both the `Tizen x.y.z SDK` and the `SDK Image`. When you run the installation manager it will show an error saying that it doesn't have a server configured. Select the `SDK Image` option and point to the zip downloaded from the Samsung website.
+
+To deploy the app right-click on the `Project Explorer` panel on the left and select `Run As > Tizen Wearable Web Application`. This will install the app on the first connected device.
+You should always clear the project before `Run As` again otherwise the IDE will take ages to update the .wgt file. This is done on the menu `Project > Clean...`.
+
+To connect a device either plug in one through USB or run a simulator. You can create new machines in the simulator on the `Connection Explorer` panel at the bottom left of the IDE. Click on the first icon of the row of icons named `Emulator Manager`.
+
 ![Screenshot](assets/image/screenshot.png)
 
 [Live Demo](http://montagejs.org/apps/popcorn/)

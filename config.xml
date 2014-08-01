@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://declarativ.com/Popcorn" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="njjwZe71De.HelloAccessoryConsumer" package="njjwZe71De" required_version="1.0"/>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon.png"/>
+    <tizen:metadata key="AccessoryServicesLocation" value="res/xml/accessoryservices.xml"/>
+    <name>Popcorn</name>
+    <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
+</widget>
